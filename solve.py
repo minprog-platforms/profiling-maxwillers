@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Union
-
+import time
 import argparse
 import os
 import sys
@@ -52,6 +52,7 @@ if __name__ == "__main__":
         print(f"puzzle {args.puzzle} does not exist")
         sys.exit(1)
 
+    t0 = time.time()
     # Load the puzzle
     sudoku = load_from_file(puzzle_path)
 
@@ -69,7 +70,10 @@ if __name__ == "__main__":
             sudoku = load_from_file(puzzle_path)
 
     print("DONE SOLVING")
+    t1 = time.time()
 
     # Show the solution
     print()
     print(solved_sudoku)
+    total = t1 - t0
+    print(f"timer in seco: {total}")
